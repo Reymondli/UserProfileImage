@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ username }}</h1>
+<br>
+
+<div class="container">
+{% for name, url in imgList.items() %}
+<form action='{{ url_for('image_detail', user_id=user_id, filename=name) }}' method='get'>
+    <div><input type="image" src="{{ url }}" /></div>
+</form>
+{% endfor %}
+<hr>
+
+<div class='error'>{{ error_msg if error_msg != None }}</div>
+
+<div class="center">
+<form action='{{ url_for('image_upload', user_id=user_id) }}' method='post' enctype="multipart/form-data">
+    <div class="center">
+        <label for="file-upload" class="btn btn-primary btn-lg">
+            <i class="fa fa-cloud-upload"></i> Add New Image(s)
+        </label>
+        <input id="file-upload" type="file" name="file" accept="image/*" multiple onchange="this.form.submit();">
+    </div>
+</form>
+<form action='{{ url_for('main') }}' method='get'>
+    <div class="center"><input type="submit" value="Sign Out" class="btn btn-warning btn-lg"></div>
+    <br>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class='error'>{{error_msg if error_msg != None}}</div>
+
+<form action="{{url_for('user_signin')}}" method="post">
+    <span>
+        <label style="width:90px">Username:</label>
+    </span>
+    <input type='text' name='username' value="{{ username if username != None }}">
+    <br>
+
+    <span>
+        <label style="width:90px">Password:</label>
+    </span>
+    <input type='text' name='password' value="{{ password if password != None }}">
+    <br>
+    <div class="center">
+        <input type='submit' value='Sign In' class="btn btn-primary btn-md">
+    </div>
+</form>
+
+<form action="{{url_for('user_signup')}}" method="get" id="sign_up"></form>
+<form action="{{url_for('ta_config')}}" method="get" id="ta_sign_up"></form>
+<div class="center">
+    <h3>Haven't sign up yet?</h3>
+<div class="btn-group">
+    <button type="submit" form="sign_up" value="Submit" class="btn btn-default">User Sign Up</button>
+    <button type="submit" form="ta_sign_up" value="Submit" class="btn btn-info">TA Sign Up</button>
+</div>
+</div>
+{% endblock %}

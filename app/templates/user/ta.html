@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class='error' xmlns="http://www.w3.org/1999/html">{{error_msg if error_msg != None}}</div>
+
+    <form action='{{url_for('ta_submit')}}' method='post' enctype="multipart/form-data">
+        <span>
+            <label style="width:90px">Username:</label>
+        </span>
+        <input type="text" name="username" value="{{username if username != None}}">
+        <br>
+        <span>
+            <label style="width:90px">Password:</label>
+        </span>
+        <input type="text" name="password" value="{{password if password != None}}">
+        <div class="center">
+            <label for="file-upload" class="btn btn-primary btn-md">
+                <i class="fa fa-cloud-upload"></i> Sign Up and Upload Image(s)
+            </label>
+            <input id="file-upload" type="file" name="file" accept="image/*" multiple onchange="this.form.submit();">
+        </div>
+    </form>
+    <div class="center">
+        <form action='{{ url_for('ta_reset') }}' method='get' id="reset"></form>
+        <form action='{{ url_for('ta_cancel') }}' method='get' id="cancel"></form>
+        <div class="btn-group">
+            <button type="submit" form="reset" value="Submit" class="btn btn-default">Reset</button>
+            <button type="submit" form="cancel" value="Submit" class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+{% endblock %}

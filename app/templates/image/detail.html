@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ filename }}</h1>
+<hr>
+<h2>Original Image:</h2>
+<img src="{{ original_img if original_img != None }}">
+<hr>
+<h2>Grey Scaled Image:</h2>
+<img src="{{ grey_img if grey_img != None }}">
+<hr>
+<h2>Horrizontally Mirrored Image:</h2>
+<img src="{{ mirror_img if mirror_img != None }}">
+<hr>
+<h2>Color Enhanced Image:</h2>
+<img src="{{ color_img if color_img != None }}">
+<hr>
+
+<form action='{{ url_for('user_profile', user_id=user_id) }}' method='get' id="back"></form>
+<form action='{{ url_for('delete_image', user_id=user_id, filename=filename) }}' method='get' id="delete"></form>
+
+<div class="btn-group">
+    <button type="submit" form="back" value="Submit" class="btn btn-default btn-lg">Back to Profile</button>
+    <button type="submit" form="delete" value="Submit" class="btn btn-danger btn-lg">Delete this Image</button>
+</div>
+
+{% endblock %}

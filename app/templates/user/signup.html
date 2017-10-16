@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class='error'>{{error_msg if error_msg != None}}</div>
+
+    <form action='{{url_for('user_signup_submit')}}' method='post'>
+        <span>
+            <label style="width:90px">Username:</label>
+        </span>
+        <input type="text" name="username" value="{{username if username != None}}">
+        <br>
+        <span>
+            <label style="width:90px">Password:</label>
+        </span>
+        <input type="text" name="password" value="{{password if password != None}}">
+
+        <div class="center">
+            <input type="submit" value="Submit" class="btn btn-primary btn-md">
+        </div>
+    </form>
+
+    <form action='{{ url_for('main') }}' method='get'>
+        <div class="center">
+            <input type="submit" value="Cancel" class="btn btn-default btn-md">
+        </div>
+    </form>
+{% endblock %}
